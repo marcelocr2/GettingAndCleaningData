@@ -31,6 +31,8 @@ colnames(dt_keep)=var_names
 #preparing to use dplyr
 tbl_new=tbl_df(dt_keep)
 #grouping by subject
-new_aux=group_by(tbl_new,Subject)
+new_aux=group_by(tbl_new,Subject,Activity)
 #getting the mean by subject
 new_final=summarise_each(new_aux,funs(mean))
+#write the data
+write.table(new_final,"run_Analysis_data.txt",row.names=FALSE)
